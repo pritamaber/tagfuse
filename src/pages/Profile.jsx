@@ -46,13 +46,13 @@ export default function Profile() {
         </div>
         {/* Donation info */}
         <div className={donateBox}>
-          <p>
-            If you found tagfuse useful,{" "}
-            <b>
-              please consider a humble donation to support the project and
-              server cost
-            </b>
-            .
+          <p className="mb-4 text-base">
+            If you found{" "}
+            <span className="font-bold text-blue-600">tagfuse</span> useful or
+            inspiring, please consider a humble donation.
+            <br />
+            Your support helps keep the project open, independent, and
+            improving!
           </p>
           <div className="mt-2 text-xs">
             <div>

@@ -5,13 +5,15 @@ import TodoColumn from "./TodoColumn";
 import ProgressColumn from "./ProgressColumn";
 import DoneColumn from "./DoneColumn";
 import ProjectListInfo from "./ProjectListInfo";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function TaskBoard() {
   const { tasks } = useContext(TaskContext);
   const [selectedTag, setSelectedTag] = useState(null);
   const [selectedProject, setSelectedProject] = useState("");
 
-  if (!tasks) return <div>Loading...</div>;
+  // Show loading spinner if tasks not loaded or invalid
+  if (!tasks || !Array.isArray(tasks)) return <LoadingSpinner />;
 
   // Filter tasks by selectedProject and/or selectedTag
   const filteredTasks = tasks.filter((task) => {

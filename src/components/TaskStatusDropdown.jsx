@@ -19,7 +19,7 @@ export default function TaskStatusDropdown({ status, onChange }) {
       className={`${baseClass} ${theme === "dark" ? darkClass : lightClass}`}
     >
       <option value="todo">To Do</option>
-      <option value="progress">Progress</option>
+      <option value="progress">In Progress</option>
       <option value="done">Done</option>
     </select>
   );

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-import { HeartHandshake, Phone, Mail, Globe } from "lucide-react";
+import { HeartHandshake, Phone, Mail, Globe, Shield } from "lucide-react";
 
 export default function Support() {
   const { theme } = useContext(ThemeContext);
@@ -21,8 +21,8 @@ export default function Support() {
           <h2 className="font-bold text-2xl">Support This Project</h2>
         </div>
         <p className="mb-4 text-base">
-          If you found <span className="font-bold">tagfuse</span> useful or
-          inspiring, please consider a humble donation.
+          If you found <span className="font-bold text-blue-600">tagfuse</span>{" "}
+          useful or inspiring, please consider a humble donation.
           <br />
           Your support helps keep the project open, independent, and improving!
         </p>
@@ -30,8 +30,14 @@ export default function Support() {
           <div className="flex items-center gap-2">
             <Phone className="w-5 h-5 text-blue-500" />
             <span className="font-semibold">PhonePe UPI:</span>
-            <span className="ml-1 select-all">6291616198 - </span>
-            <span> Pritam Das</span>
+            <span className="ml-1 select-all">+91 62916-16198 - </span>
+            <span className="inline-flex items-center gap-1">
+              Pritam Das
+              <Shield
+                className="w-4 h-4 text-blue-600 dark:text-blue-400"
+                aria-label="Verified Developer"
+              />
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <Mail className="w-5 h-5 text-green-500" />

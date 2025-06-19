@@ -88,6 +88,160 @@ export default function Home() {
           </div>
         ))}
       </div>
+
+      {/* {why tagfuse section} */}
+      <div>
+        <section className="w-full max-w-4xl mx-auto py-12 px-4 bg-white dark:bg-zinc-900 rounded-2xl shadow">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-700 dark:text-blue-400">
+            Why{" "}
+            <span className="text-blue-700 dark:text-blue-400">tagfuse</span>?
+          </h2>
+          <div className="text-lg text-zinc-900 dark:text-zinc-50 mb-6">
+            <span className="font-semibold text-blue-700 dark:text-blue-400">
+              Built for developers.
+            </span>
+            <br />
+            Tagfuse is the Kanban board that cuts through the noise. No bloat.
+            No endless settings. No unnecessary features.
+            <br />
+            <br />
+            Unlike Trello, Jira, and other generic tools, Tagfuse focuses on
+            what developers actually need:{" "}
+            <span className="font-semibold">
+              clarity, speed, and minimal context switching
+            </span>
+            .
+            <br />
+            <br />
+            Forget complicated automations and endless notifications. With
+            Tagfuse, you get:
+          </div>
+          <ul className="list-disc list-inside mt-3 space-y-2 text-base text-zinc-900 dark:text-zinc-50 font-medium">
+            <li>
+              <b>Minimal UI</b> – Clean, distraction-free, and
+              keyboard-friendly.
+            </li>
+            <li>
+              <b>Project & Tag Filters</b> – Instantly group your tasks the way
+              you want.
+            </li>
+            <li>
+              <b>Built for coders</b> – No marketing features, just
+              productivity.
+            </li>
+            <li>
+              <b>Dark mode by default</b> – For late-night coding sprints.
+            </li>
+            <li>
+              <b>Zero learning curve</b> – Ship your next project, not another
+              tool.
+            </li>
+          </ul>
+        </section>
+      </div>
+      {/* {testimonials } */}
+      <div>
+        <section className="w-full max-w-4xl mx-auto py-12 px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-700 dark:text-blue-400">
+            What developers say
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Testimonial 1 */}
+            <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-700 rounded-xl p-6 shadow">
+              <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt=""
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-bold text-zinc-900 dark:text-zinc-50">
+                    Siddharth T.
+                  </div>
+                  <div className="text-xs text-blue-600 dark:text-blue-400">
+                    Backend Engineer, Bangalore
+                  </div>
+                </div>
+              </div>
+              <div className="text-zinc-800 dark:text-zinc-100 italic">
+                “Finally, a Kanban tool that doesn't feel like project
+                management overhead. Tagfuse is fast, minimal, and just works
+                for my coding workflow.”
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-700 rounded-xl p-6 shadow">
+              <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="https://randomuser.me/api/portraits/women/45.jpg"
+                  alt=""
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-bold text-zinc-900 dark:text-zinc-50">
+                    Anjali M.
+                  </div>
+                  <div className="text-xs text-blue-600 dark:text-blue-400">
+                    Full Stack Dev, Pune
+                  </div>
+                </div>
+              </div>
+              <div className="text-zinc-800 dark:text-zinc-100 italic">
+                “With Trello I always got lost in columns. Tagfuse keeps me
+                focused. Tag filters are a game changer for managing
+                side-projects.”
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-700 rounded-xl p-6 shadow">
+              <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="https://randomuser.me/api/portraits/men/90.jpg"
+                  alt=""
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-bold text-zinc-900 dark:text-zinc-50">
+                    Arjun R.
+                  </div>
+                  <div className="text-xs text-blue-600 dark:text-blue-400">
+                    Indie Hacker
+                  </div>
+                </div>
+              </div>
+              <div className="text-zinc-800 dark:text-zinc-100 italic">
+                “Most kanban apps are cluttered. Tagfuse is refreshingly simple.
+                It’s the first tool I open after my code editor.”
+              </div>
+            </div>
+
+            {/* Testimonial 4 */}
+            <div className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-700 rounded-xl p-6 shadow">
+              <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="https://randomuser.me/api/portraits/men/20.jpg"
+                  alt=""
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-bold text-zinc-900 dark:text-zinc-50">
+                    Manoj P.
+                  </div>
+                  <div className="text-xs text-blue-600 dark:text-blue-400">
+                    Open Source Contributor
+                  </div>
+                </div>
+              </div>
+              <div className="text-zinc-800 dark:text-zinc-100 italic">
+                “The keyboard shortcuts and instant project filters are
+                brilliant. Tagfuse is exactly what devs need — no distractions.”
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

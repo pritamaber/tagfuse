@@ -26,7 +26,7 @@ function App() {
   return (
     <div
       className={
-        "min-h-screen bg-gradient-to-br " +
+        "min-h-screen flex flex-col bg-gradient-to-br " +
         (theme === "dark"
           ? "from-zinc-900 to-zinc-950"
           : "from-gray-100 to-white")
@@ -34,62 +34,64 @@ function App() {
     >
       <Router>
         <Navbar /> {/* ✅ Always show Navbar on top */}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <RedirectIfAuth>
-                <Home />
-              </RedirectIfAuth>
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
+        <div className="flex-1 flex flex-col w-full">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <RedirectIfAuth>
+                  <Home />
+                </RedirectIfAuth>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <main className="max-w-4xl mx-auto flex flex-col items-center px-2 mt-8">
+                    <TaskBoard />
+                  </main>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/support"
+              element={
                 <main className="max-w-4xl mx-auto flex flex-col items-center px-2 mt-8">
-                  <TaskBoard />
+                  <Support />
                 </main>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/support"
-            element={
-              <main className="max-w-4xl mx-auto flex flex-col items-center px-2 mt-8">
-                <Support />
-              </main>
-            }
-          />
-          {/* Auth routes */}
-          <Route
-            path="/login"
-            element={
-              <RedirectIfAuth>
-                <Login />
-              </RedirectIfAuth>
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <RedirectIfAuth>
-                <Signup />
-              </RedirectIfAuth>
-            }
-          />
-          {/* Profile - protected */}
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <main className="max-w-4xl mx-auto flex flex-col items-center px-2 mt-8">
-                  <Profile />
-                </main>
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+              }
+            />
+            {/* Auth routes */}
+            <Route
+              path="/login"
+              element={
+                <RedirectIfAuth>
+                  <Login />
+                </RedirectIfAuth>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <RedirectIfAuth>
+                  <Signup />
+                </RedirectIfAuth>
+              }
+            />
+            {/* Profile - protected */}
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <main className="max-w-4xl mx-auto flex flex-col items-center px-2 mt-8">
+                    <Profile />
+                  </main>
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </div>
         <Footer />
       </Router>
     </div>
