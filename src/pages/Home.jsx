@@ -4,35 +4,35 @@ import { ThemeContext } from "../context/ThemeContext"; // Import your ThemeCont
 // Example: Replace with your actual image imports if copying locally
 const screenshots = [
   {
-    src: "/public/signup.png",
+    src: "/signup.png",
     alt: "Signup Dark Theme",
     caption: "Beautiful dark theme – clean, focused onboarding for developers.",
   },
   {
-    src: "/public/darkmode.png",
+    src: "/darkmode.png",
     alt: "Kanban Dashboard Dark",
     caption:
       "Organize all your tasks in a minimal, developer-first Kanban board.",
   },
   {
-    src: "/public/tags_project_filter.png",
+    src: "/tags_project_filter.png",
     alt: "Tag and Project Filters",
     caption:
       "Instantly filter by project or tag. Color-coded and lightning-fast.",
   },
   {
-    src: "/public/lightmode.png",
+    src: "/lightmode.png",
     alt: "Light Theme – Kanban",
     caption: "Switch between dark and light mode anytime.",
   },
   {
-    src: "/public/task_form.png",
+    src: "/task_form.png",
     alt: "Add Task Modal",
     caption:
       "Quick-add tasks with keyboard shortcuts and real-time tag color preview.",
   },
   {
-    src: "/public/dropdown.png",
+    src: "/dropdown.png",
     alt: "Responsive UI",
     caption:
       "100% responsive. Tagfuse works beautifully on desktop and mobile.",
