@@ -17,7 +17,7 @@ export default function AuthLayout({
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-white dark:from-zinc-900 dark:to-zinc-950 px-4">
+    <div className="flex items-center justify-center min-h-[80vh] px-4">
       <div
         className={`
           w-full max-w-md

@@ -34,6 +34,10 @@ export default function Navbar() {
     theme === "dark"
       ? "bg-red-900 text-red-100 hover:bg-red-800"
       : "bg-red-100 text-red-600 hover:bg-red-200";
+  const supportClass =
+    theme === "dark"
+      ? "text-zinc-200 hover:text-blue-400"
+      : "text-zinc-600 hover:text-blue-600";
 
   return (
     <nav className={`w-full shadow-sm border-b px-4 py-3 transition ${navBg}`}>
@@ -52,7 +56,7 @@ export default function Navbar() {
         <div className="flex-1 flex justify-center">
           <Link
             to="/support"
-            className="text-sm font-medium hover:underline transition"
+            className={`text-sm font-medium hover:underline transition ${supportClass}`}
           >
             Support
           </Link>
