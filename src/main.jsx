@@ -9,12 +9,17 @@ import ThemeProvider from "./context/ThemeProvider.jsx";
 // import task provider
 import { TaskProvider } from "./context/TaskProvider.jsx";
 
+// import auth provider
+import { AuthProvider } from "./context/AuthProvider";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider>
-      <TaskProvider>
-        <App />
-      </TaskProvider>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <TaskProvider>
+          <App />
+        </TaskProvider>
+      </ThemeProvider>
+    </AuthProvider>
   </StrictMode>
 );
