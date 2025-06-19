@@ -37,6 +37,10 @@ export const taskReducer = (tasks, action) => {
         task._id === action.payload ? { ...task, status: "done" } : task
       );
     }
+    // Add single task through modal
+    case "ADD_TASK": {
+      return [action.payload, ...tasks];
+    }
 
     // Remove task with matching _id
     case "DELETE": {
