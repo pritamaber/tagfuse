@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { X } from "lucide-react";
 // import user auth
-import useAuth from "../hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
 // import theme context
 import { ThemeContext } from "../context/ThemeContext";
 

@@ -3,24 +3,36 @@ import { Plus } from "lucide-react";
 import { useState, useContext } from "react";
 import AddTaskModal from "./AddTaskModal";
 import { TaskContext } from "../context/TaskContext";
-import { ThemeContext } from "../context/ThemeContext"; // Import theme context
+import { ThemeContext } from "../context/ThemeContext";
+import { useAuth } from "../hooks/useAuth";
 
 export default function TodoColumn({ tasks }) {
   const [showModal, setShowModal] = useState(false);
+  const { user } = useAuth();
 
-  // Access dispatch for updating task list globally
+  // Contexts
   const { dispatch } = useContext(TaskContext);
-  // Access theme to apply correct text color for header
   const { theme } = useContext(ThemeContext);
 
-  // Filter tasks for "todo" status only
-  const todoTasks = tasks.filter((task) => task.status === "todo");
+  // Defensive: Ensure tasks is always an array
+  const safeTasks = Array.isArray(tasks) ? tasks : [];
+  const todoTasks = safeTasks.filter((task) => task.status === "todo");
 
-  // Function to refresh task list after adding a new task
+  // Refresh tasks after add (with error guard)
+
   function refreshTasks() {
-    fetch("https://api.impritam.com/api/tasks")
+    fetch(`https://api.impritam.com/api/tasks?userId=${user.uid}`)
       .then((res) => res.json())
-      .then((tasks) => dispatch({ type: "SET_TASKS", payload: tasks }));
+      .then((tasks) => {
+        if (Array.isArray(tasks)) {
+          dispatch({ type: "SET_TASKS", payload: tasks });
+        } else {
+          dispatch({ type: "SET_TASKS", payload: [] });
+        }
+      })
+      .catch((err) => {
+        dispatch({ type: "SET_TASKS", payload: [] });
+      });
   }
 
   return (
@@ -47,7 +59,7 @@ export default function TodoColumn({ tasks }) {
         </button>
       </div>
 
-      {/* Add Task Modal, shown only when showModal is true */}
+      {/* Modal */}
       {showModal && (
         <AddTaskModal
           onClose={() => setShowModal(false)}
@@ -55,10 +67,18 @@ export default function TodoColumn({ tasks }) {
         />
       )}
 
-      {/* Map through todo tasks and render each TaskCard */}
-      {todoTasks.map((task) => (
-        <TaskCard key={task._id} {...task} />
-      ))}
+      {/* Render todo tasks only if array */}
+      {todoTasks.length === 0 ? (
+        <p
+          className={`text-sm italic mt-2 ${
+            theme === "dark" ? "text-zinc-500" : "text-zinc-400"
+          }`}
+        >
+          No tasks to do!
+        </p>
+      ) : (
+        todoTasks.map((task) => <TaskCard key={task._id} {...task} />)
+      )}
     </div>
   );
 }
