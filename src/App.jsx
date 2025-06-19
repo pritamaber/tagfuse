@@ -10,6 +10,8 @@ import Profile from "./pages/Profile";
 import RedirectIfAuth from "./components/RedirectIfAuth";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -90,6 +92,9 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            {/* ...other routes */}
+            <Route path="*" element={<NotFound />} />{" "}
+            {/* <- This handles all unknown routes */}
           </Routes>
         </div>
         <Footer />
