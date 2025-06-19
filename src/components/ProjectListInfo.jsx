@@ -13,7 +13,7 @@ export default function ProjectListInfo({
   return (
     <div className="w-full flex flex-col items-center mb-4">
       <h4 className="text-xs font-bold uppercase tracking-wide mb-2 text-zinc-400">
-        Projects
+        Your Projects
       </h4>
       <div className="flex flex-wrap gap-2 justify-center">
         <button

@@ -1,7 +1,7 @@
 // taskReducer.js
 
 /**
- * Reducer function for managing tasks in TaskJet Kanban.
+ * Reducer function for managing tasks in tagfuse Kanban.
  * @param {Array} tasks - Array of task objects.
  * @param {Object} action - Action object: { type: string, payload: any }
  * @returns {Array} Updated array of tasks.

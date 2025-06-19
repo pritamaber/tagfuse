@@ -47,7 +47,7 @@ export default function Profile() {
         {/* Donation info */}
         <div className={donateBox}>
           <p>
-            If you found TaskJet useful,{" "}
+            If you found tagfuse useful,{" "}
             <b>
               please consider a humble donation to support the project and
               server cost

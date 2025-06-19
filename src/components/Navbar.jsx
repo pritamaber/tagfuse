@@ -46,10 +46,21 @@ export default function Navbar() {
         <Link
           to="/"
           className={`flex items-center gap-2 text-xl font-extrabold px-3 py-2 rounded transition ${logoClass}`}
-          aria-label="Taskjet Home"
+          aria-label="tagfuse Home"
         >
           <KanbanSquare className="w-6 h-6 text-blue-600" />
-          <span>Taskjet</span>
+          <span>tagfuse</span>
+          {/* For Developers tag */}
+          <span
+            className={`
+      ml-2 px-2 py-0.5 rounded text-xs font-semibold
+      bg-blue-100 text-blue-700 border border-blue-200
+      dark:bg-zinc-800 dark:text-blue-400 dark:border-zinc-700
+    `}
+            style={{ letterSpacing: "0.05em" }}
+          >
+            For Developers
+          </span>
         </Link>
 
         {/* Center: Support link */}

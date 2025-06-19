@@ -21,7 +21,7 @@ export default function Support() {
           <h2 className="font-bold text-2xl">Support This Project</h2>
         </div>
         <p className="mb-4 text-base">
-          If you found <span className="font-bold">TaskJet</span> useful or
+          If you found <span className="font-bold">tagfuse</span> useful or
           inspiring, please consider a humble donation.
           <br />
           Your support helps keep the project open, independent, and improving!

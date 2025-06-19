@@ -1,11 +1,14 @@
 import { useState, useContext } from "react";
 import { X } from "lucide-react";
-// import user auth
 import { useAuth } from "../hooks/useAuth";
-// import theme context
 import { ThemeContext } from "../context/ThemeContext";
 
+/**
+ * AddTaskModal - Modal dialog for adding a new task.
+ * Handles form logic, theming, and user context.
+ */
 export default function AddTaskModal({ onClose, onTaskAdded }) {
+  // Form state
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
   const [tags, setTags] = useState("");
@@ -13,12 +16,23 @@ export default function AddTaskModal({ onClose, onTaskAdded }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // destruct user fron use auth
+  // Auth and Theme context
   const { user } = useAuth();
-
-  // destruct theme from context
   const { theme } = useContext(ThemeContext);
 
+  // Common classes
+  const inputClass = `w-full border rounded p-2 text-sm focus:outline-none transition
+    ${
+      theme === "dark"
+        ? "bg-zinc-800 text-zinc-100 border-zinc-700 placeholder-zinc-400"
+        : "bg-white text-zinc-900 border-gray-300 placeholder-gray-400"
+    }
+  `;
+  const labelClass = `block text-sm font-medium mb-1 transition
+    ${theme === "dark" ? "text-zinc-200" : "text-zinc-800"}
+  `;
+
+  // Handle form submission
   async function handleAddTask(e) {
     e.preventDefault();
     setLoading(true);
@@ -53,19 +67,6 @@ export default function AddTaskModal({ onClose, onTaskAdded }) {
     }
   }
 
-  // Common classes for inputs and textarea
-  const inputClass = `w-full border rounded p-2 text-sm focus:outline-none transition
-    ${
-      theme === "dark"
-        ? "bg-zinc-800 text-zinc-100 border-zinc-700 placeholder-zinc-400"
-        : "bg-white text-zinc-900 border-gray-300 placeholder-gray-400"
-    }
-  `;
-
-  const labelClass = `block text-sm font-medium mb-1 transition
-    ${theme === "dark" ? "text-zinc-200" : "text-zinc-800"}
-  `;
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       {/* Modal box */}
@@ -76,15 +77,22 @@ export default function AddTaskModal({ onClose, onTaskAdded }) {
         `}
         autoFocus
       >
-        {/* Close button */}
+        {/* Close button (improved contrast and visibility) */}
         <button
           type="button"
-          className="absolute top-3 right-3 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          className={`
+            absolute top-3 right-3 transition
+            text-zinc-400 
+            hover:text-zinc-900 
+            dark:hover:text-zinc-50
+            focus:outline-none
+            `}
           onClick={onClose}
           aria-label="Close"
         >
           <X className="w-5 h-5" />
         </button>
+
         <h2
           className={`font-bold text-lg mb-4 text-center ${
             theme === "dark" ? "text-zinc-100" : "text-zinc-900"
@@ -92,6 +100,8 @@ export default function AddTaskModal({ onClose, onTaskAdded }) {
         >
           Add Task
         </h2>
+
+        {/* Title */}
         <div className="mb-3">
           <label className={labelClass}>
             Title <span className="text-red-500">*</span>
@@ -105,6 +115,8 @@ export default function AddTaskModal({ onClose, onTaskAdded }) {
             placeholder="Task title"
           />
         </div>
+
+        {/* Note */}
         <div className="mb-3">
           <label className={labelClass}>Note</label>
           <textarea
@@ -116,6 +128,8 @@ export default function AddTaskModal({ onClose, onTaskAdded }) {
             placeholder="(optional)"
           />
         </div>
+
+        {/* Project */}
         <div className="mb-3">
           <label className={labelClass}>
             Project <span className="text-red-500">*</span>
@@ -125,24 +139,31 @@ export default function AddTaskModal({ onClose, onTaskAdded }) {
             value={project}
             onChange={(e) => setProject(e.target.value)}
             required
-            placeholder="e.g. TaskJet"
+            placeholder="e.g. tagfuse"
           />
         </div>
-        <div className="mb-4">
-          <label className={labelClass}>
-            Tags{" "}
-            <span className="text-xs text-gray-400 dark:text-zinc-400">
-              (comma separated)
-            </span>
-          </label>
+
+        {/* Tags */}
+        <div className="mb-1">
+          <label className={labelClass}>Tags</label>
           <input
-            className={inputClass}
+            className={inputClass + " truncate"}
             value={tags}
             onChange={(e) => setTags(e.target.value)}
-            placeholder="feature, urgent"
+            placeholder="feature, urgent, bug"
+            maxLength={100}
+            // Truncate long input visually
           />
+          {/* Helper text moved under input for better UX */}
+          <span className="block text-xs mt-1 text-gray-400 dark:text-zinc-400">
+            Comma separated (use same tags as above for color-coded tags)
+          </span>
         </div>
+
+        {/* Error message */}
         {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
+
+        {/* Submit button */}
         <button
           type="submit"
           disabled={loading || !title.trim() || !project.trim()}
