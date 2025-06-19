@@ -6,7 +6,14 @@ import { TaskContext } from "../context/TaskContext";
 import TaskStatusDropdown from "./TaskStatusDropdown";
 
 // Minimal, context-based TaskCard
-export default function TaskCard({ _id, title, note, tags = [], status }) {
+export default function TaskCard({
+  _id,
+  title,
+  note,
+  tags = [],
+  project,
+  status,
+}) {
   const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(TaskContext);
 
@@ -49,6 +56,7 @@ export default function TaskCard({ _id, title, note, tags = [], status }) {
             ))}
           </div>
         </div>
+        <p>Project - {project}</p>
         <h3 className="font-bold text-base mb-1 truncate">{title}</h3>
         {note && (
           <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
