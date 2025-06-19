@@ -4,6 +4,11 @@ import { TaskContext } from "../context/TaskContext";
 
 // import progress selector
 import TaskStatusDropdown from "./TaskStatusDropdown";
+// import task delete button
+import TaskDeleteButton from "./TaskDeleteButton";
+
+// import tag colors
+import { TAG_COLORS } from "../constants/tagColors";
 
 // Minimal, context-based TaskCard
 export default function TaskCard({
@@ -16,6 +21,17 @@ export default function TaskCard({
 }) {
   const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(TaskContext);
+
+  // function to handle task delete
+  async function handleDelete() {
+    // 1. Call backend API to delete the task
+    await fetch(`https://api.impritam.com/api/tasks/${_id}`, {
+      method: "DELETE",
+    });
+
+    // 2. Update local state (remove task from UI)
+    dispatch({ type: "DELETE", payload: _id });
+  }
 
   // Set card background and text based on theme
   const cardTheme =
@@ -49,7 +65,11 @@ export default function TaskCard({
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-block text-[11px] px-2 py-[2px] rounded-full border font-medium bg-gray-50 text-gray-600 border-gray-200"
+                className={
+                  "inline-block text-[11px] px-2 py-[2px] rounded-full border font-medium " +
+                  (TAG_COLORS[tag] ||
+                    "bg-gray-50 text-gray-600 border-gray-200")
+                }
               >
                 {tag}
               </span>
@@ -82,6 +102,7 @@ export default function TaskCard({
               dispatch({ type: "ADD_TO_DONE", payload: _id });
           }}
         />
+        <TaskDeleteButton onClick={handleDelete} />
       </div>
     </>
   );

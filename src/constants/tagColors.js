@@ -1,0 +1,16 @@
+export const TAG_COLORS = {
+  bug: "bg-red-100 text-red-700 border-red-300",
+  feature: "bg-blue-100 text-blue-700 border-blue-300",
+  urgent: "bg-yellow-100 text-yellow-700 border-yellow-300",
+  ui: "bg-purple-100 text-purple-700 border-purple-300",
+  backend: "bg-green-100 text-green-700 border-green-300",
+  docs: "bg-gray-100 text-gray-700 border-gray-300",
+  testing: "bg-pink-100 text-pink-700 border-pink-300",
+  "low-priority": "bg-slate-100 text-slate-700 border-slate-300",
+  "high-priority": "bg-orange-100 text-orange-700 border-orange-300",
+  blocked: "bg-red-200 text-red-900 border-red-400",
+  review: "bg-indigo-100 text-indigo-700 border-indigo-300",
+  deploy: "bg-teal-100 text-teal-700 border-teal-300",
+  research: "bg-emerald-100 text-emerald-700 border-emerald-300",
+  discussion: "bg-cyan-100 text-cyan-700 border-cyan-300",
+};
