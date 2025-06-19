@@ -44,7 +44,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         {/* Left: Logo */}
         <Link
-          to="/"
+          to="/dashboard"
           className={`flex items-center gap-2 text-xl font-extrabold px-3 py-2 rounded transition ${logoClass}`}
           aria-label="tagfuse Home"
         >

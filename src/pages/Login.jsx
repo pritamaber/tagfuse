@@ -44,7 +44,7 @@ export default function Login() {
     onSubmit: async (values, { setSubmitting, setErrors }) => {
       try {
         await signInWithEmailAndPassword(auth, values.email, values.password);
-        navigate("/"); // redirect on success
+        navigate("/dashboard"); // redirect on success
       } catch (err) {
         setErrors({ password: "Invalid email or password" });
         setSubmitting(false);

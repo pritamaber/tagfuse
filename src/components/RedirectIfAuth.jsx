@@ -8,11 +8,6 @@ import { useAuth } from "../hooks/useAuth";
  */
 export default function RedirectIfAuth({ children }) {
   const { user } = useAuth();
-
-  // If already logged in, redirect to dashboard
-  if (user) {
-    return <Navigate to="/" replace />;
-  }
-
+  if (user) return <Navigate to="/dashboard" replace />;
   return children;
 }

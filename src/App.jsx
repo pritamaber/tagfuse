@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import RedirectIfAuth from "./components/RedirectIfAuth";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -33,9 +35,16 @@ function App() {
       <Router>
         <Navbar /> {/* ✅ Always show Navbar on top */}
         <Routes>
-          {/* Protected Dashboard/Home */}
           <Route
             path="/"
+            element={
+              <RedirectIfAuth>
+                <Home />
+              </RedirectIfAuth>
+            }
+          />
+          <Route
+            path="/dashboard"
             element={
               <ProtectedRoute>
                 <main className="max-w-4xl mx-auto flex flex-col items-center px-2 mt-8">
@@ -44,7 +53,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* Support Page - Public */}
           <Route
             path="/support"
             element={
@@ -53,7 +61,7 @@ function App() {
               </main>
             }
           />
-          {/* Login route (let AuthLayout inside the page handle centering) */}
+          {/* Auth routes */}
           <Route
             path="/login"
             element={
@@ -62,7 +70,6 @@ function App() {
               </RedirectIfAuth>
             }
           />
-          {/* Signup route */}
           <Route
             path="/signup"
             element={
@@ -71,7 +78,7 @@ function App() {
               </RedirectIfAuth>
             }
           />
-          {/* Profile - protected and centered */}
+          {/* Profile - protected */}
           <Route
             path="/profile"
             element={
@@ -83,6 +90,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

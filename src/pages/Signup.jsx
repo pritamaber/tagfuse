@@ -52,7 +52,7 @@ export default function Signup() {
           values.email,
           values.password
         );
-        navigate("/"); // ✅ Redirect after signup
+        navigate("/dashboard"); // ✅ Redirect after signup
       } catch (error) {
         setErrors({ email: "Email already in use" });
         setSubmitting(false);
