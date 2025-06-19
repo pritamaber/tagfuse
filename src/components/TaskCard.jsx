@@ -1,12 +1,15 @@
 import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-import { TaskContext } from "../context/TaskContext";
 
+// import theme context
+import { ThemeContext } from "../context/ThemeContext";
+//import task context
+import { TaskContext } from "../context/TaskContext";
 // import progress selector
 import TaskStatusDropdown from "./TaskStatusDropdown";
 // import task delete button
 import TaskDeleteButton from "./TaskDeleteButton";
-
+//import auth context
+import { useAuth } from "../hooks/useAuth";
 // import tag colors
 import { TAG_COLORS } from "../constants/tagColors";
 
@@ -19,17 +22,18 @@ export default function TaskCard({
   project,
   status,
 }) {
+  // destruct user from auth , theme , and dispatch for task
+  const { user } = useAuth();
   const { theme } = useContext(ThemeContext);
   const { dispatch } = useContext(TaskContext);
 
   // function to handle task delete
   async function handleDelete() {
-    // 1. Call backend API to delete the task
     await fetch(`https://api.impritam.com/api/tasks/${_id}`, {
       method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.uid }), // <-- add this!
     });
-
-    // 2. Update local state (remove task from UI)
     dispatch({ type: "DELETE", payload: _id });
   }
 
@@ -90,7 +94,7 @@ export default function TaskCard({
             await fetch(`https://api.impritam.com/api/tasks/${_id}`, {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ status: newStatus }),
+              body: JSON.stringify({ status: newStatus, userId: user.uid }),
             });
 
             // 2. Update local state via reducer

@@ -30,7 +30,8 @@ export default function Support() {
           <div className="flex items-center gap-2">
             <Phone className="w-5 h-5 text-blue-500" />
             <span className="font-semibold">PhonePe UPI:</span>
-            <span className="ml-1 select-all">6291616198</span>
+            <span className="ml-1 select-all">6291616198 - </span>
+            <span> Pritam Das</span>
           </div>
           <div className="flex items-center gap-2">
             <Mail className="w-5 h-5 text-green-500" />

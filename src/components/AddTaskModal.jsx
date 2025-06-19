@@ -1,5 +1,8 @@
 import { useState, useContext } from "react";
 import { X } from "lucide-react";
+// import user auth
+import useAuth from "../hooks/useAuth";
+// import theme context
 import { ThemeContext } from "../context/ThemeContext";
 
 export default function AddTaskModal({ onClose, onTaskAdded }) {
@@ -10,6 +13,10 @@ export default function AddTaskModal({ onClose, onTaskAdded }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // destruct user fron use auth
+  const { user } = useAuth();
+
+  // destruct theme from context
   const { theme } = useContext(ThemeContext);
 
   async function handleAddTask(e) {
@@ -30,6 +37,7 @@ export default function AddTaskModal({ onClose, onTaskAdded }) {
             .filter(Boolean),
           status: "todo",
           project,
+          userId: user.uid,
         }),
       });
       if (!res.ok) {
