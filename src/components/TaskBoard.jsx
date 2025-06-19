@@ -12,10 +12,8 @@ export default function TaskBoard() {
   const [selectedTag, setSelectedTag] = useState(null);
   const [selectedProject, setSelectedProject] = useState("");
 
-  // Show loading spinner if tasks not loaded or invalid
   if (!tasks || !Array.isArray(tasks)) return <LoadingSpinner />;
 
-  // Filter tasks by selectedProject and/or selectedTag
   const filteredTasks = tasks.filter((task) => {
     const matchesProject = !selectedProject || task.project === selectedProject;
     const matchesTag =
@@ -26,21 +24,29 @@ export default function TaskBoard() {
 
   return (
     <div className="w-full min-h-[80vh] flex flex-col items-center">
-      {/* Project filter (buttons) */}
       <ProjectListInfo
         selectedProject={selectedProject}
         setSelectedProject={setSelectedProject}
       />
-      {/* Tag filter (buttons) */}
       <TagListInfo selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
 
-      <div className="max-w-4xl w-full mx-auto px-2 md:px-0">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* Start Card */}
+      <div
+        className="
+          max-w-5xl w-full mx-auto px-2 md:px-0
+          rounded-2xl shadow-lg border
+          bg-transparent
+          transition
+          mt-4
+        "
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-8 px-2 md:px-8">
           <TodoColumn tasks={filteredTasks} />
           <ProgressColumn tasks={filteredTasks} />
-          <DoneColumn tasks={filteredTasks} />
+          <DoneColumn tasks={tasks} />
         </div>
       </div>
+      {/* End Card */}
     </div>
   );
 }

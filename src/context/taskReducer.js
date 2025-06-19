@@ -47,6 +47,9 @@ export const taskReducer = (tasks, action) => {
       // action.payload: task._id (string)
       return tasks.filter((task) => task._id !== action.payload);
     }
+    case "DELETE_ALL_DONE": {
+      return tasks.filter((task) => task.status !== "done");
+    }
 
     // Default: return existing state
     default:
